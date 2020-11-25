@@ -70,8 +70,10 @@ void initWeapons() {
 
   /**
    * 武器：魔兽之牙
-   * 攻击范围：32*3+16
-   * 攻击伤害：24 todo
+   * 射程：32*3+16
+   * 攻击伤害：24
+   * 武器类型：狂战斧
+   * todo
    */
   initWeapon(now = &weapons[WEAPON_MONSTER_CLAW], -1, RES_CLAWFX2, -1);
   now->wp = WEAPON_SWORD_RANGE;
@@ -83,8 +85,10 @@ void initWeapons() {
 
   /**
    * 武器：火球
-   * 攻击范围：32*3+16
+   * 射程：32*3+16
    * 攻击伤害：24
+   * 武器类型：溅射枪
+   * todo
    */
   initWeapon(now = &weapons[WEAPON_FIREBALL], RES_Shine, RES_HALO_EXPLOSION1,
              RES_FIREBALL);
@@ -99,6 +103,14 @@ void initWeapons() {
   now->birthAudio = AUDIO_SHOOT;
   now->deathAudio = AUDIO_FIREBALL_EXP;
 
+  /**
+   * 武器：雷电
+   * 射程：128
+   * 伤害：80
+   * 攻击间隔：120
+   * 武器类型：狂战斧类型
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_THUNDER], RES_BLOOD_BOUND, RES_Thunder, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->damage = 80;
@@ -108,6 +120,14 @@ void initWeapons() {
   now->deathAni->scaled = false;
   now->deathAudio = AUDIO_THUNDER;
 
+  /**
+   * 武器：落雷群
+   * 射程：128
+   * 伤害：50
+   * 攻击间隔：120
+   * 武器类型：狂战斧类型
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_THUNDER_STAFF], -1, RES_THUNDER_YELLOW, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->damage = 50;
@@ -117,6 +137,14 @@ void initWeapons() {
   now->deathAni->scaled = false;
   now->deathAudio = AUDIO_THUNDER;
 
+  /**
+   * 武器：弓箭
+   * 射程：200
+   * 伤害：10
+   * 攻击间隔：40
+   * 攻击物飞行速度：10
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_ARROW], -1, RES_HALO_EXPLOSION2, RES_ARROW);
   now->wp = WEAPON_GUN_POINT;
   now->gap = 40;
@@ -129,6 +157,14 @@ void initWeapons() {
   now->birthAudio = AUDIO_LIGHT_SHOOT;
   now->deathAudio = AUDIO_ARROW_HIT;
 
+  /**
+   * 武器：强力弓
+   * 射程：320
+   * 伤害：25
+   * 攻击间隔：60
+   * 攻击物飞行速度：7
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_POWERFUL_BOW], -1, RES_HALO_EXPLOSION2,
              RES_ARROW);
   now->wp = WEAPON_GUN_POINT;
@@ -142,8 +178,19 @@ void initWeapons() {
   now->deathAudio = AUDIO_ARROW_HIT;
   now->effects[BUFF_ATTACK] = (WeaponBuff){0.5, 240};
 
+  /**
+   * 武器：魔兽之牙2
+   * 暂未设计
+   */
   initWeapon(now = &weapons[WEAPON_MONSTER_CLAW2], -1, RES_CLAWFX, -1);
 
+  /**
+   * 武器：飞斧
+   * 射程：160
+   * 伤害：12
+   * 攻击物飞行速度：10
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_THROW_AXE], -1, RES_CROSS_HIT, RES_AXE);
   now->wp = WEAPON_GUN_POINT;
   now->damage = 12;
@@ -157,6 +204,15 @@ void initWeapons() {
   now->birthAudio = AUDIO_LIGHT_SHOOT;
   now->deathAudio = AUDIO_ARROW_HIT;
 
+  /**
+   * 武器：飞斧群
+   * 射程：180
+   * 伤害：50
+   * 攻击间隔：70
+   * 影响范围：50
+   * 攻击物飞行速度：4
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_MANY_AXES], -1, RES_CROSS_HIT, RES_AXE);
   now->wp = WEAPON_GUN_POINT_MULTI;
   now->shootRange = 180;
@@ -170,17 +226,30 @@ void initWeapons() {
   now->birthAudio = AUDIO_LIGHT_SHOOT;
   now->deathAudio = AUDIO_ARROW_HIT;
 
+  /**
+   * 武器：污泥
+   * buffer效果：减速
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_SOLID], -1, RES_SOLIDFX, -1);
   now->deathAni->scaled = false;
   now->deathAni->angle = -1;
   now->effects[BUFF_SLOWDOWN] = (WeaponBuff){0.3, 180};
 
+  /**
+   * 武器：污泥（绿色）
+   * 射程：96
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_SOLID_GREEN], -1, RES_SOLID_GREENFX, -1);
   now->shootRange = 96;
   now->deathAni->scaled = false;
   now->deathAni->angle = -1;
   now->effects[BUFF_SLOWDOWN] = (WeaponBuff){0.3, 180};
 
+  /**
+   * 武器：todo
+   */
   initWeapon(now = &weapons[WEAPON_SOLID_CLAW], -1, RES_SOLID_GREENFX, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->shootRange = 32 * 3 + 16;
@@ -190,6 +259,16 @@ void initWeapons() {
   now->deathAudio = AUDIO_CLAW_HIT_HEAVY;
   now->effects[BUFF_SLOWDOWN] = (WeaponBuff){0.7, 60};
 
+  /**
+   * 武器：冰锥
+   * 射程：256
+   * 伤害：30
+   * 攻击间隔：180
+   * 攻击物飞行速度：8
+   * 武器类型：溅射枪
+   * 武器buff：减速
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_ICEPICK], -1, RES_ICESHATTER, RES_ICEPICK);
   now->wp = WEAPON_GUN_RANGE;
   now->damage = 30;
@@ -203,6 +282,14 @@ void initWeapons() {
   now->effects[BUFF_FROZEN] = (WeaponBuff){0.2, 60};
   now->birthAudio = AUDIO_ICE_SHOOT;
 
+  /**
+   * 武器：魔法球
+   * 射程：256
+   * 伤害；20
+   * 攻击间隔：100
+   * 攻击物飞行速度：6
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_PURPLE_BALL], -1, RES_PURPLE_EXP,
              RES_PURPLE_BALL);
   now->wp = WEAPON_GUN_RANGE;
@@ -218,6 +305,15 @@ void initWeapons() {
   now->birthAudio = AUDIO_ICE_SHOOT;
   now->deathAudio = AUDIO_ARROW_HIT;
 
+  /**
+   * 武器：魔法球群
+   * 射程：256
+   * 伤害：45
+   * 攻击间隔：100
+   * 攻击物飞行速度：7
+   * 影响范围：50
+   * todo
+   */
   initWeapon(now = &weapons[WEAPON_PURPLE_STAFF], -1, RES_PURPLE_EXP,
              RES_PURPLE_BALL);
   now->wp = WEAPON_GUN_POINT_MULTI;
@@ -233,12 +329,26 @@ void initWeapons() {
   now->birthAudio = AUDIO_ICE_SHOOT;
   now->deathAudio = AUDIO_ARROW_HIT;
 
+  /**
+   * 武器：圣剑
+   * 射程：32*4
+   * 伤害：30
+   * 武器类型：狂战斧
+   * 武器buff：
+   */
   initWeapon(now = &weapons[WEAPON_HOLY_SWORD], -1, RES_GOLDEN_CROSS_HIT, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->damage = 30;
   now->shootRange = 32 * 4;
   now->effects[BUFF_DEFFENCE] = (WeaponBuff){0.6, 180};
 
+  /**
+   * 武器：冰剑
+   * 射程：32*3.5
+   * 伤害：80
+   * 攻击间隔：30
+   * 武器buff：减速
+   */
   initWeapon(now = &weapons[WEAPON_ICE_SWORD], -1, RES_ICESHATTER, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->shootRange = 32 * 3 + 16;

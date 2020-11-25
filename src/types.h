@@ -14,11 +14,7 @@
 #define BUFF_END 4
 // Renderer Types
 
-/**
- * 枚举类型，分别指代上下左右
- */
-typedef enum { LEFT, RIGHT, UP, DOWN } Direction;
-
+typedef enum { LEFT, RIGHT, UP, DOWN } Direction; // 枚举类型，分别指代上下左右
 typedef enum { AT_TOP_LEFT, AT_BOTTOM_LEFT, AT_BOTTOM_CENTER, AT_CENTER } At;
 typedef enum { LOOP_ONCE, LOOP_INFI, LOOP_LIFESPAN } LoopType;
 

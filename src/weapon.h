@@ -46,12 +46,12 @@
 #define WEAPON_MANY_AXES 7
 
 /**
- * 武器：怪物的口水（带减速效果）
+ * 武器：污泥（带减速效果）
  */
 #define WEAPON_SOLID 8
 
 /**
- * 武器：怪物的口水
+ * 武器：污泥（绿色）
  */
 #define WEAPON_SOLID_GREEN 9
 
@@ -76,12 +76,12 @@
 #define WEAPON_HOLY_SWORD 13
 
 /**
- * 武器：紫球
+ * 武器：魔法球
  */
 #define WEAPON_PURPLE_BALL 14
 
 /**
- * 武器：紫球群
+ * 武器：魔法球群
  */
 #define WEAPON_PURPLE_STAFF 15
 
@@ -112,7 +112,7 @@ typedef enum {
 } WeaponType;
 
 /**
- * 武器的附带效果
+ * 武器的附带效果（疑似是减速的速率和时间）todo 减速效果
  */
 typedef struct {
   double chance;    // 状态改变 todo
