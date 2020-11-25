@@ -16,6 +16,7 @@
 #include "storage.h"
 #include "text.h"
 #include "types.h"
+// UI模块
 
 extern LinkList animationsList[];
 extern bool hasMap[MAP_SIZE][MAP_SIZE];

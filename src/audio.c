@@ -3,6 +3,8 @@
 #include "helper.h"
 #include "res.h"
 
+// 音效和BGM模块
+
 extern const int bgmNums;
 extern Mix_Music *bgms[AUDIO_BGM_SIZE];
 extern Mix_Chunk *sounds[AUDIO_SOUND_SIZE];

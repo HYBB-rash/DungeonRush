@@ -12,7 +12,7 @@
 #include "render.h"
 #include "weapon.h"
 
-
+// 图形界面初始话和资源加载模块
 
 // Constants
 const int n = SCREEN_WIDTH/UNIT;
@@ -99,7 +99,7 @@ bool init() {
     success = false;
   } else {
     // Create window
-    window = SDL_CreateWindow("Dungeon Rush "VERSION_STRING, SDL_WINDOWPOS_UNDEFINED,
+    window = SDL_CreateWindow("Dungeon Rush (Alpha)", SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
                               SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == NULL) {

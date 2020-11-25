@@ -10,8 +10,22 @@ extern Texture textures[RES_HALO_EXPLOSION2];
 extern Mix_Chunk* sounds[AUDIO_SOUND_SIZE];
 
 Weapon weapons[WEAPONS_SIZE];
-void initWeapon(Weapon* self, int birthTextureId, int deathTextureId,
-                int flyTextureId) {
+
+/**
+ * 初始化武器，为其创建在游戏中的动画
+ * 如果在initWeapons未指定初始化属性值，则默认:
+ * @param 攻击距离 32*2
+ * @param 攻击范围为 40
+ * @param 伤害为 10
+ * @param 攻击间隔时间为 60
+ * @param 射速为 6
+ *
+ * @param self 武器
+ * @param birthTextureId 武器刷新是的贴图ID
+ * @param deathTextureId 武器销毁时的贴图ID
+ * @param flyTextureId 武器在飞行（远程攻击）时的贴图ID
+ */
+void initWeapon(Weapon* self, int birthTextureId, int deathTextureId, int flyTextureId) {
   Animation* birthAni = NULL;
   Animation* deathAni = NULL;
   Animation* flyAni = NULL;
@@ -34,9 +48,19 @@ void initWeapon(Weapon* self, int birthTextureId, int deathTextureId,
       WEAPON_SWORD_POINT, 32 * 2, 40, 10, 60, 6, birthAni, deathAni, flyAni, -1,
       AUDIO_CLAW_HIT};
 }
+
+/**
+ * 初始化各类武器
+ *
+ */
 void initWeapons() {
   Weapon* now;
 
+  /**
+   * 武器：剑
+   * 攻击范围：32*3
+   * 攻击伤害：30
+   */
   initWeapon(now = &weapons[WEAPON_SWORD], -1, RES_SwordFx, -1);
   now->damage = 30;
   now->shootRange = 32 * 3;
@@ -44,6 +68,11 @@ void initWeapons() {
   now->deathAni->angle = -1;
   now->deathAudio = AUDIO_SWORD_HIT;
 
+  /**
+   * 武器：魔兽之牙
+   * 攻击范围：32*3+16
+   * 攻击伤害：24 todo
+   */
   initWeapon(now = &weapons[WEAPON_MONSTER_CLAW], -1, RES_CLAWFX2, -1);
   now->wp = WEAPON_SWORD_RANGE;
   now->shootRange = 32 * 3 + 16;
@@ -52,6 +81,11 @@ void initWeapons() {
   now->deathAni->at = AT_CENTER;
   now->deathAudio = AUDIO_CLAW_HIT_HEAVY;
 
+  /**
+   * 武器：火球
+   * 攻击范围：32*3+16
+   * 攻击伤害：24
+   */
   initWeapon(now = &weapons[WEAPON_FIREBALL], RES_Shine, RES_HALO_EXPLOSION1,
              RES_FIREBALL);
   now->wp = WEAPON_GUN_RANGE;

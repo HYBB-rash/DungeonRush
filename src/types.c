@@ -135,21 +135,47 @@ void copyAnimation(Animation* src, Animation* dest) {
   }
 }
 
+/**
+ * 初始化链表的节点
+ * @param self 一个链表节点
+ */
 void initLinkNode(LinkNode* self) {
   self->nxt = self->pre = self->element = NULL;
 }
+
+/**
+ * 创建一个链表的节点
+ * @param element 链表内的内容
+ * @return 返回一个节点
+ */
 LinkNode* createLinkNode(void* element) {
   LinkNode* self = malloc(sizeof(LinkNode));
   initLinkNode(self);
   self->element = element;
   return self;
 }
+
+/**
+ * 初始化链表，把链表的头节点和尾节点初始化为null
+ * @param self 一个链表
+ */
 void initLinkList(LinkList* self) { self->head = self->tail = NULL; }
+
+/**
+ * 创建一个链表结构
+ * @return 链表指针
+ */
 LinkList* createLinkList() {
   LinkList* self = malloc(sizeof(LinkList));
   initLinkList(self);
   return self;
 }
+
+/**
+ * 将节点插入链表中（头插法）
+ * @param list 待插入的链表（双向链表的插法）
+ * @param node 待插入的节点
+ */
 void pushLinkNodeAtHead(LinkList* list, LinkNode* node) {
   if (list->head == NULL) {
     list->head = list->tail = node;
@@ -159,6 +185,11 @@ void pushLinkNodeAtHead(LinkList* list, LinkNode* node) {
     list->head = node;
   }
 }
+/**
+ * 将节点插入链表中（尾插法）
+ * @param list 待插入的链表（双向链表的插法）
+ * @param node 待插入的节点
+ */
 void pushLinkNode(LinkList* list, LinkNode* node) {
   if (list->head == NULL) {
     list->head = list->tail = node;
@@ -169,6 +200,12 @@ void pushLinkNode(LinkList* list, LinkNode* node) {
     list->tail = node;
   }
 }
+
+/**
+ * 删除链表中的节点
+ * @param list
+ * @param node
+ */
 void removeLinkNode(LinkList* list, LinkNode* node) {
   if (node->pre) {
     node->pre->nxt = node->nxt;
@@ -182,6 +219,11 @@ void removeLinkNode(LinkList* list, LinkNode* node) {
   }
   free(node);
 }
+
+/**
+ * 历遍整个链表，把所有的链表节点删除
+ * @param self 一个链表
+ */
 void destroyLinkList(LinkList* self) {
   for (LinkNode *p = self->head, *nxt; p; p = nxt) {
     nxt = p->nxt;
@@ -189,6 +231,11 @@ void destroyLinkList(LinkList* self) {
   }
   free(self);
 }
+
+/**
+ * 将所有的链表的节点对应的动画效果删除，并每删除一个动画，就移除一个链表节点
+ * @param list
+ */
 void destroyAnimationsByLinkList(LinkList* list) {
   for (LinkNode *p = list->head, *nxt; p; p = nxt) {
     nxt = p->nxt;

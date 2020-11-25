@@ -3,12 +3,16 @@
 #include <SDL.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "ai.h"
 #include "game.h"
 #include "helper.h"
 #include "res.h"
 #include "types.h"
+
+// 渲染模块
+// 渲染引擎部分 todo
 
 #ifdef DBG
 #include <assert.h>

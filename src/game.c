@@ -20,6 +20,8 @@
 #include "types.h"
 #include "weapon.h"
 
+
+// 游戏核心逻辑模块
 #ifdef DBG
 #include <assert.h>
 #endif

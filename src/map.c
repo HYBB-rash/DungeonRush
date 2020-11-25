@@ -6,6 +6,8 @@
 #include "render.h"
 #include "res.h"
 #include "types.h"
+
+// 地图模块（元胞自动机）
 #ifdef DBG
 #include <assert.h>
 #endif

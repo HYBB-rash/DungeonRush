@@ -13,6 +13,13 @@ void initSnake(Snake* snake, int step, int team, PlayerType playerType) {
   snake->playerType = playerType;
 }
 
+/**
+ * 创建一个贪吃蛇队伍
+ * @param step
+ * @param team
+ * @param playerType 玩家类型
+ * @return 返回一只贪吃蛇队伍
+ */
 Snake* createSnake(int step, int team, PlayerType playerType) {
   Snake* self = malloc(sizeof(Snake));
   initSnake(self, step, team, playerType);

@@ -1,7 +1,7 @@
 #include "storage.h"
 
 #include <string.h>
-
+// 数据存储（记录排行榜）模块
 void readScore(FILE* f, Score* score) {
   fscanf(f, "%d %d %d %d\n", &score->damage, &score->stand, &score->killed,
          &score->got);
