@@ -103,11 +103,28 @@ void renderCstrText(const char* str, int x, int y, double scale) {
   initText(text, str, WHITE);
   renderText(text, x, y, scale);
 }
+
+/**
+ * 渲染字体
+ * @param text 目标字体
+ * @param x 渲染的位置
+ * @param y 渲染的位置
+ * @param scale 缩放程度
+ */
 void renderText(const Text* text, int x, int y, double scale) {
   SDL_Rect dst = {x, y, (int)(text->width * scale + 0.5),
                   (int)(text->height * scale + 0.5)};
   SDL_RenderCopy(renderer, text->origin, NULL, &dst);
 }
+
+/**
+ * 将字体渲染在中间的位置
+ * @param text 目标字符
+ * @param x  位置
+ * @param y  位置
+ * @param scale  缩放倍率
+ * @return 返回SDL_Point坐标
+ */
 SDL_Point renderCenteredText(const Text* text, int x, int y, double scale) {
   int width = text->width * scale + 0.5;
   int height = text->height * scale + 0.5;
@@ -120,10 +137,18 @@ void unsetEffect(Texture* texture) {
   SDL_SetTextureColorMod(texture->origin, 255, 255, 255);
   SDL_SetTextureAlphaMod(texture->origin, 255);
 }
+
+/**
+ * todo 特效渲染？
+ * 给贴图增添混合特效
+ * @param texture
+ * @param effect
+ */
 void setEffect(Texture* texture, Effect* effect) {
   if (!effect) return;
   SDL_SetTextureBlendMode(texture->origin, effect->mode);
 
+  //
   double interval = effect->duration / (effect->length - 1);
   double progress = effect->currentFrame;
   int stage = progress / interval;
@@ -254,6 +279,20 @@ void pushAnimationToRender(int id, Animation* ani) {
   LinkNode* p = createLinkNode(ani);
   pushLinkNode(&animationsList[id], p);
 }
+/**
+ * 将动画效果附着到链表中
+ * @param list
+ * @param texture
+ * @param effect
+ * @param lp
+ * @param duration
+ * @param x
+ * @param y
+ * @param flip
+ * @param angle
+ * @param at
+ * @return
+ */
 Animation* createAndPushAnimation(LinkList* list, Texture* texture,
                                   const Effect* effect, LoopType lp,
                                   int duration, int x, int y,

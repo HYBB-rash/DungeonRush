@@ -5,11 +5,14 @@
 #include "weapon.h"
 #include "player.h"
 
+/**
+ * 子弹
+ */
 typedef struct {
   Weapon* parent;
   int x, y, team;
   Snake* owner;
-  double rad;
+  double rad; // 角度
   Animation* ani;
 } Bullet;
 Bullet* createBullet(Snake* owner,Weapon* parent, int x, int y, double rad, int team, Animation* ani);

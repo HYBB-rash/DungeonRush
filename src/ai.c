@@ -38,6 +38,7 @@ int trapVerdict(Sprite* sprite) {
     }
   return ret;
 }
+
 int getPowerfulPlayer() {
   int maxNum = 0, mxCount = 0, id = -1;
   for (int i = 0; i < playersCount; i++) {
@@ -53,6 +54,7 @@ int getPowerfulPlayer() {
              ? (spriteSnake[id]->num >= AI_LOCK_LIMIT ? id : -1)
              : -1;
 }
+
 int balanceVerdict(Sprite* sprite, int id) {
   if (id == -1) return 0;
   if (!spriteSnake[id]->sprites->head) return 0;
@@ -64,6 +66,7 @@ int balanceVerdict(Sprite* sprite, int id) {
   if (player->y < sprite->y && sprite->direction == UP) ret++;
   return ret;
 }
+
 int testOneMove(Snake* snake, Direction direction) {
   Sprite* snakeHead = snake->sprites->head->element;
   Direction recover = snakeHead->direction;
@@ -73,7 +76,7 @@ int testOneMove(Snake* snake, Direction direction) {
   for (int i = 1; i <= AI_PREDICT_STEPS; i++) {
     moveSprite(snakeHead, snake->moveStep * i);
     updateAnimationOfSprite(snakeHead);
-    crush -= crushVerdict(snakeHead, false, true) * 500;
+    crush -= crushVerdict(snakeHead, false, true) * 1000;
     trap -= trapVerdict(snakeHead);
     playerBalance += balanceVerdict(snakeHead, powerful) * 10;
     // revoke position
@@ -83,10 +86,12 @@ int testOneMove(Snake* snake, Direction direction) {
   snakeHead->direction = recover;
   return trap + crush + playerBalance;
 }
+
 int compareChoiceByValue(const void* x, const void* y) {
   const Choice *a = x, *b = y;
   return b->value - a->value;
 }
+
 void AiInput(Snake* snake) {
   Sprite* snakeHead = snake->sprites->head->element;
   Direction currentDirection = snakeHead->direction;
@@ -104,13 +109,14 @@ void AiInput(Snake* snake) {
     if (count) {
       int maxValue = choices[0].value;
       int nowChoice = 0;
-      for (int i = 1; i < 4; i++) {
+      for (int i = 0; i < count; i++) {
         if (choices[i].value > maxValue) {
           maxValue = choices[i].value;
           nowChoice = i;
         }
       }
-      changeSpriteDirection(snake->sprites->head, choices[nowChoice].direction);
+      if (maxValue > originValue)
+        changeSpriteDirection(snake->sprites->head, choices[nowChoice].direction);
     }
   }
 }

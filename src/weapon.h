@@ -41,100 +41,47 @@
 #define WEAPON_THROW_AXE 6
 
 /**
- * 武器：飞斧(群攻)
+ * 武器：一群飞斧
  */
 #define WEAPON_MANY_AXES 7
 
 /**
- * 武器：污泥（带减速效果）
+ * 武器：怪物的口水（带减速效果）
  */
 #define WEAPON_SOLID 8
 
 /**
- * 武器：污泥（绿色）
+ * 武器：怪物的口水
  */
 #define WEAPON_SOLID_GREEN 9
 
-/**
- * 武器：冰锥
- */
 #define WEAPON_ICEPICK 10
-
-/**
- * 武器：火剑
- */
 #define WEAPON_FIRE_SWORD 11
-
-/**
- * 武器：冰剑
- */
 #define WEAPON_ICE_SWORD 12
-
-/**
- * 武器：圣剑
- */
 #define WEAPON_HOLY_SWORD 13
-
-/**
- * 武器：魔法球
- */
 #define WEAPON_PURPLE_BALL 14
-
-/**
- * 武器：魔法球群
- */
 #define WEAPON_PURPLE_STAFF 15
-
-/**
- * 武器：闪电群
- */
 #define WEAPON_THUNDER_STAFF 16
-
-/**
- * todo
- */
 #define WEAPON_SOLID_CLAW 17
-
-/**
- * 武器：强力弓
- */
 #define WEAPON_POWERFUL_BOW 18
 
-/**
- * 枚举类型：武器种类
- */
 typedef enum {
-    WEAPON_SWORD_POINT,       // 单体剑（一次攻击一个人）
-    WEAPON_SWORD_RANGE,       // 狂战斧（一次攻击多人）
-    WEAPON_GUN_RANGE,         // 溅射枪（一次攻击多人）
-    WEAPON_GUN_POINT,         // 单体枪（一次攻击一人）
-    WEAPON_GUN_POINT_MULTI,   // 连发溅射枪（多次攻击，每次攻击都为范围攻击）
+  WEAPON_SWORD_POINT,
+  WEAPON_SWORD_RANGE,
+  WEAPON_GUN_RANGE,
+  WEAPON_GUN_POINT,
+  WEAPON_GUN_POINT_MULTI,
 } WeaponType;
-
-/**
- * 武器的附带效果（疑似是减速的速率和时间）todo 减速效果
- */
 typedef struct {
-  double chance;    // 状态改变 todo
-  int duration;     // 持续时间
+  double chance;
+  int duration;
 } WeaponBuff;
-
-/**
- * 武器数据类型
- */
 typedef struct {
   WeaponType wp;
-
-  int shootRange;   // 武器攻击范围
-  int effectRange;  //武器攻击的影响范围
-  int damage;       // 武器伤害
-  int gap;          // 攻击间隔时间
-  int bulletSpeed;  // 射速
-
-  Animation *birthAni, *deathAni, *flyAni;  // 武器的动画效果
-  int birthAudio, deathAudio;               // 武器的音效
-
-  WeaponBuff effects[BUFF_END];// 武器效果
+  int shootRange, effectRange, damage, gap, bulletSpeed;
+  Animation *birthAni, *deathAni, *flyAni;
+  int birthAudio, deathAudio;
+  WeaponBuff effects[BUFF_END];
 } Weapon;
 
 void initWeapons();
